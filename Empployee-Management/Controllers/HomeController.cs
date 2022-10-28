@@ -10,7 +10,7 @@ namespace Empployee_Management.Controllers
     {
         public string Index()
         {
-            return "Employee - Management";
+            return "Employee - Management MVC";
         }
     }
 }
