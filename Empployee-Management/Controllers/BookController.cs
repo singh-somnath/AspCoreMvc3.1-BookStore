@@ -2,24 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Empployee_Management.Models;
+using Empployee_Management.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Empployee_Management.Controllers
 {
     public class BookController : Controller
     {
-        public string GetAllBooks()
+        private readonly BookRepository _bookRepository = null;
+
+        public BookController()
         {
-            return "All Books";
+            _bookRepository = new BookRepository();
         }
-         public string GetBook(int id)
+        public List<BookModel> GetAllBooks()
         {
-            return $"Book with id - {id}";
+            return _bookRepository.GetAllBooks();
+        }
+         public BookModel GetBook(int id)
+        {
+            return _bookRepository.GetBookById(id);
         }
 
-        public string SearchBook(string bookName, string authorName)
+        public List<BookModel> SearchBook(string bookName, string authorName)
         {
-            return $"Book witk Name = {bookName} and Author={authorName}";
+            return _bookRepository.SearchBook(bookName, authorName);
         }
     }
 }
