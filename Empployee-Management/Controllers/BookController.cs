@@ -16,9 +16,10 @@ namespace Empployee_Management.Controllers
         {
             _bookRepository = new BookRepository();
         }
-        public List<BookModel> GetAllBooks()
+        public ViewResult GetAllBooks()
         {
-            return _bookRepository.GetAllBooks();
+            List<BookModel> data =  _bookRepository.GetAllBooks();
+            return View();
         }
          public BookModel GetBook(int id)
         {
