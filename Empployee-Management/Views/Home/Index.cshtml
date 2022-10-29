@@ -10,49 +10,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
 </head>
-<body>
+<body class="container">
     <img src="~/images/Australia.png" alt="Austrailia" class="logo"/>
-    <h1>Welcome to the Book Store Application.</h1>
-    <h4>Prime Number under 100 @{int numRange = 100;}</h4>
-    @{
-        string output = "";
-        for (int num = 1; num <= numRange; num++)
-        {
-
-            if (num == 1)
-            {
-                output += num.ToString() + "\t\t";
-            }
-            else
-            {
-                bool isDivideByOther = false;
-                for (int divNum = 2; divNum < num; divNum++)
-                {
-                    if (num % divNum == 0)
-                    {
-                        isDivideByOther = true;
-                        break;
-                    }
-                }
-
-                if (!isDivideByOther)
-                { output += num.ToString() + "\t\t"; }
-            }
-
-        }
-        <h5>@output</h5>
-    }
-
-    <h4>Fibonacci Sum for 100 @{int fibNum = 100;}</h4>
-    @{
-        long output_l = 0;
-        for (int num = 1; num <= fibNum; num++)
-        {
-            output_l += num;
-
-        }
-        <h5>@output_l</h5>
-    }
+    <h1  class="h1">Welcome to the Book Store Application.</h1>
+    <button type="button" class="btn btn-danger">Click Me</button>
 </body>
+<script src="~/lib/jquery/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        alert("Page Loaded");
+    });
+</script>
 </html>
