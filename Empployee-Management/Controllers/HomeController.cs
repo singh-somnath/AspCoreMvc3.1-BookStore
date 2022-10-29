@@ -16,5 +16,9 @@ namespace Empployee_Management.Controllers
         {
             return View();
         }
+        public ViewResult ContactUs()
+        {
+            return View();
+        }
     }
 }
