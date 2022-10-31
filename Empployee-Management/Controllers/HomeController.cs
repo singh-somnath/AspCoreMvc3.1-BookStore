@@ -20,5 +20,10 @@ namespace Empployee_Management.Controllers
         {
             return View();
         }
+        public ViewResult OldIndex()
+        {
+            ViewBag.Title = "Hi Everyome";
+            return View("ContactUs");
+        }
     }
 }
