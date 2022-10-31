@@ -12,19 +12,23 @@ namespace Empployee_Management.Controllers
     {
         private readonly BookRepository _bookRepository = null;
 
+        [ViewData]
+        public string Title { get; set; }
         public BookController()
         {
             _bookRepository = new BookRepository();
         }
         public ViewResult GetAllBooks()
         {
+            Title = "Book List";
             List<BookModel> data =  _bookRepository.GetAllBooks();
             return View(data);
         }
          public ViewResult GetBook(int id)
         {
-
+            
             var data =  _bookRepository.GetBookById(id);
+            Title = "Book - " + data.Title;
             return View(data);
         }
 
