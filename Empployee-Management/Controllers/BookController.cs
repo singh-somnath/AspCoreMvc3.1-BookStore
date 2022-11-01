@@ -36,5 +36,16 @@ namespace Empployee_Management.Controllers
         {
             return _bookRepository.SearchBook(bookName, authorName);
         }
+
+        public ViewResult AddNewBook()
+        {
+            Title = "Add Book";
+            return View();
+        }
+        [HttpPost]
+        public ViewResult AddBook(BookModel bookModel)
+        {
+            return View();
+        }
     }
 }
