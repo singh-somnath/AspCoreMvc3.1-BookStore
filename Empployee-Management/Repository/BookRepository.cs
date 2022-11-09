@@ -1,4 +1,5 @@
-﻿using Empployee_Management.Models;
+﻿using Empployee_Management.Data;
+using Empployee_Management.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,30 @@ namespace Empployee_Management.Repository
 {
     public class BookRepository
     {
+        private readonly BookStoreContext _bookStoreContext = null;
+
+        public BookRepository(BookStoreContext _context)
+        {
+            _bookStoreContext = _context;
+        }
+
+        public int AddNewBook(BookModel book)
+        {
+            Books newBook = new Books()
+            {
+                Author = book.Author,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = book.Title,
+                TotalPages = book.TotalPages,
+                Description = book.Description
+            };
+
+            _bookStoreContext.Add(newBook);
+            _bookStoreContext.SaveChanges();
+
+            return newBook.Id;
+        }
         public List<BookModel> GetAllBooks()
         {
             return DataSource();
