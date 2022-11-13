@@ -25,7 +25,7 @@ namespace Empployee_Management.Repository
                 CreatedOn = DateTime.UtcNow,
                 UpdatedOn = DateTime.UtcNow,
                 Title = book.Title,
-                TotalPages = book.TotalPages,
+                TotalPages = book.TotalPages.HasValue ? book.TotalPages.Value : 0,
                 Description = book.Description
             };
 

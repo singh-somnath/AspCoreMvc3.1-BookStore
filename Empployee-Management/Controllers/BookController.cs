@@ -15,7 +15,7 @@ namespace Empployee_Management.Controllers
 
         [ViewData]
         public string Title { get; set; }
-        public BookController(BookRepository bookRepository )
+        public BookController(BookRepository bookRepository)
         {
             _bookRepository = bookRepository;
         }
@@ -24,11 +24,11 @@ namespace Empployee_Management.Controllers
             Title = "Book List";
             var data = await _bookRepository.GetAllBooks();
             return View(data);
-        }   
-         public async Task<ViewResult> GetBook(int id)
+        }
+        public async Task<ViewResult> GetBook(int id)
         {
-            
-            var data = await  _bookRepository.GetBookById(id);
+
+            var data = await _bookRepository.GetBookById(id);
             Title = "Book - " + data.Title;
             return View(data);
         }
@@ -48,11 +48,13 @@ namespace Empployee_Management.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
-            int newBookId =await _bookRepository.AddNewBook(bookModel);
-
-            if (newBookId > 0)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("AddNewBook",new { success = true, bookID = newBookId });
+                int newBookId = await _bookRepository.AddNewBook(bookModel);
+                if (newBookId > 0)
+                {
+                    return RedirectToAction("AddNewBook", new { success = true, bookID = newBookId });
+                }
             }
             return View();
         }
