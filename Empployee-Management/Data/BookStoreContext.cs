@@ -11,7 +11,7 @@ namespace Empployee_Management.Data
         public BookStoreContext(DbContextOptions<BookStoreContext> options):base(options)
         { }
 
-        public DbSet<Books> Book { get; set; }
+        public DbSet<Book> Books { get; set; }
 
        /* Connectstring added in startup class under configureservice.
         * protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

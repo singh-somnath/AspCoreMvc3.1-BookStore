@@ -19,16 +19,16 @@ namespace Empployee_Management.Controllers
         {
             _bookRepository = bookRepository;
         }
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult> GetAllBooks()
         {
             Title = "Book List";
-            List<BookModel> data =  _bookRepository.GetAllBooks();
+            var data = await _bookRepository.GetAllBooks();
             return View(data);
-        }
-         public ViewResult GetBook(int id)
+        }   
+         public async Task<ViewResult> GetBook(int id)
         {
             
-            var data =  _bookRepository.GetBookById(id);
+            var data = await  _bookRepository.GetBookById(id);
             Title = "Book - " + data.Title;
             return View(data);
         }
@@ -46,9 +46,9 @@ namespace Empployee_Management.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddNewBook(BookModel bookModel)
+        public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
-            int newBookId =_bookRepository.AddNewBook(bookModel);
+            int newBookId =await _bookRepository.AddNewBook(bookModel);
 
             if (newBookId > 0)
             {
